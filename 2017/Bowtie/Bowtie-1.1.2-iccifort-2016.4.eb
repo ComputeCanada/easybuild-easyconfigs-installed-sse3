@@ -1,0 +1,180 @@
+# Built with EasyBuild version 3.1.2-rd5bd3ea7189cf01de20734f8f13ef0b62438aae3 on 2017-04-06_03-47-25
+# Built with EasyBuild version 3.1.1-r0d799fee0c566dd833bd858e1f302c3b65220b7e on 2017-03-18_00-42-53
+# Built with EasyBuild version 3.1.1-rca288e3b276282dc7cf314414ec2e55b300430f4 on 2017-03-08_15-35-53
+# Modified from existing version by:
+# Robert Schmidt <rjeschmi@gmail.com>
+# Ottawa Hospital Research Institute - Bioinformatics Team
+name = 'Bowtie'
+version = '1.1.2'
+
+homepage = 'http://bowtie-bio.sourceforge.net/index.shtml'
+description = """Bowtie is an ultrafast, memory-efficient short read aligner.
+It aligns short DNA sequences (reads) to the human genome.
+"""
+
+toolchain = {'name': 'iccifort', 'version': '2016.4'}
+toolchainopts = {'pic': True}
+
+sources = ['%(namelower)s-%(version)s-src.zip']
+source_urls = ['http://download.sourceforge.net/bowtie-bio/']
+
+patches = [
+    'int64typedef.patch',
+    'Bowtie-%(version)s_void2int.patch'
+]
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 37.67,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ'", "--filter-env-vars='LD_LIBRARY_PATH'", '--force', "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--suffix-modules-path=''", "--try-toolchain='iccifort,2016.4'", 'Bowtie-1.1.2-intel-2016b.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.1-r452e20d196b7c373e9c9df3cd707b41ee7ece521",
+    "easybuild-framework_version": "3.1.1-rca288e3b276282dc7cf314414ec2e55b300430f4",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 4827758,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/store/fhdr6nggnjkmvidlbwz4xzf7ppvibn7v-Lmod-7.3.16/lmod/lmod/libexec/lmod', '7.3.16'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1488987353,
+    "total_memory": 241658,
+}]
+
+# Build statistics
+buildstats = [
+{
+    "build_time": 37.67,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ'", "--filter-env-vars='LD_LIBRARY_PATH'", '--force', "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--suffix-modules-path=''", "--try-toolchain='iccifort,2016.4'", 'Bowtie-1.1.2-intel-2016b.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.1-r452e20d196b7c373e9c9df3cd707b41ee7ece521",
+    "easybuild-framework_version": "3.1.1-rca288e3b276282dc7cf314414ec2e55b300430f4",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 4827758,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/store/fhdr6nggnjkmvidlbwz4xzf7ppvibn7v-Lmod-7.3.16/lmod/lmod/libexec/lmod', '7.3.16'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1488987353,
+    "total_memory": 241658,
+},
+{
+    "build_time": 40.21,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant'", "--filter-env-vars='LD_LIBRARY_PATH'", '--force', "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--suffix-modules-path=''", 'Bowtie-1.1.2-iccifort-2016.4.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.1-r0c1b94995e070af820cd68a6a688f0a2087b37da",
+    "easybuild-framework_version": "3.1.1-r0d799fee0c566dd833bd858e1f302c3b65220b7e",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 4827758,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/store/xzkr5bkjcy4xn8ha573h6v0rf50z0slx-Lmod-7.3.24/lmod/lmod/libexec/lmod', '7.3.24'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1489797773,
+    "total_memory": 241658,
+},
+]
+
+# Build statistics
+buildstats = [
+{
+    "build_time": 37.67,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ'", "--filter-env-vars='LD_LIBRARY_PATH'", '--force', "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--suffix-modules-path=''", "--try-toolchain='iccifort,2016.4'", 'Bowtie-1.1.2-intel-2016b.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.1-r452e20d196b7c373e9c9df3cd707b41ee7ece521",
+    "easybuild-framework_version": "3.1.1-rca288e3b276282dc7cf314414ec2e55b300430f4",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 4827758,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/store/fhdr6nggnjkmvidlbwz4xzf7ppvibn7v-Lmod-7.3.16/lmod/lmod/libexec/lmod', '7.3.16'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1488987353,
+    "total_memory": 241658,
+},
+{
+    "build_time": 40.21,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant'", "--filter-env-vars='LD_LIBRARY_PATH'", '--force', "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--suffix-modules-path=''", 'Bowtie-1.1.2-iccifort-2016.4.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.1-r0c1b94995e070af820cd68a6a688f0a2087b37da",
+    "easybuild-framework_version": "3.1.1-r0d799fee0c566dd833bd858e1f302c3b65220b7e",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 4827758,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/store/xzkr5bkjcy4xn8ha573h6v0rf50z0slx-Lmod-7.3.24/lmod/lmod/libexec/lmod', '7.3.24'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1489797773,
+    "total_memory": 241658,
+},
+{
+    "build_time": 40.81,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--buildpath='/dev/shm/ebuser'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant,gettext,X11,pkg-config,LLVM,libdrm,gperf,FLTK,fontconfig,freetype,GMP,GL2PS,gnuplot,GraphicsMagick'", "--filter-env-vars='LD_LIBRARY_PATH'", "--hide-deps='icc,ifort'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=nocona -mtune=generic\\', \\'Intel\\': \\'msse3\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo_sse3'", "--robot='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--subdir-user-modules='.local/easybuild/modules/2017'", "--suffix-modules-path=''", "--tmpdir='/cvmfs/local/tmp'", "--use-ccache='/cvmfs/local/ccache'", '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bamtools/2.4.1/easybuild/BamTools-2.4.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bcftools/1.4/easybuild/BCFtools-1.4-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/beagle-lib/2.1.2/easybuild/beagle-lib-2.1.2-GCC-5.4.0-nix.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bedtools/2.26.0/easybuild/BEDTools-2.26.0-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/blast+/2.6.0/easybuild/BLAST+-2.6.0-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/blat/3.5/easybuild/BLAT-3.5-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/boost/1.60.0/easybuild/Boost-1.60.0-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bowtie/1.1.2/easybuild/Bowtie-1.1.2-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bowtie2/2.3.0/easybuild/Bowtie2-2.3.0-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/bwa/0.7.15/easybuild/BWA-0.7.15-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/cuda/8.0.44/easybuild/CUDA-8.0.44-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/cufflinks/2.2.1/easybuild/Cufflinks-2.2.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/fftw/3.3.6/easybuild/FFTW-3.3.6-GCC-5.4.0-nix.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/gdal/2.1.3/easybuild/GDAL-2.1.3-GCC-5.4.0-Python-2.7.13.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/geos/3.6.1/easybuild/GEOS-3.6.1-GCC-5.4.0-Python-2.7.13.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/gsl/2.2.1/easybuild/GSL-2.2.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/hdf5/1.8.18/easybuild/HDF5-1.8.18-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/htslib/1.4/easybuild/HTSlib-1.4-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/jellyfish/2.2.6/easybuild/Jellyfish-2.2.6-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/metis/4.0.3/easybuild/METIS-4.0.3-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/mono/4.6.2.7/easybuild/Mono-4.6.2.7-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/mothur/1.39.4/easybuild/Mothur-1.39.4-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/netcdf/4.4.1.1/easybuild/netCDF-4.4.1.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/netcdf-c++/4.2/easybuild/netCDF-C++-4.2-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/openmpi/2.0.2/easybuild/OpenMPI-2.0.2-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/proj/4.9.3/easybuild/PROJ-4.9.3-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/r/3.3.3/easybuild/R-3.3.3-gmkl-2016.4-bare.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/samtools/0.1.20/easybuild/SAMtools-0.1.20-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/samtools/1.3.1/easybuild/SAMtools-1.3.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/stacks/1.45/easybuild/Stacks-1.45-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/tophat/2.1.1/easybuild/TopHat-2.1.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/gcc5.4/transdecoder/3.0.1/easybuild/TransDecoder-3.0.1-GCC-5.4.0.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/arpack-ng/3.4.0/easybuild/arpack-ng-3.4.0-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bamtools/2.4.1/easybuild/BamTools-2.4.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bcftools/1.4/easybuild/BCFtools-1.4-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/beagle-lib/2.1.2/easybuild/beagle-lib-2.1.2-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/beast/2.4.0/easybuild/Beast-2.4.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bedtools/2.26.0/easybuild/BEDTools-2.26.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/blat/3.5/easybuild/BLAT-3.5-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/boost/1.60.0/easybuild/Boost-1.60.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bowtie/1.1.2/easybuild/Bowtie-1.1.2-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bowtie2/2.3.0/easybuild/Bowtie2-2.3.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/bwa/0.7.15/easybuild/BWA-0.7.15-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/clhep/2.3.1.1/easybuild/CLHEP-2.3.1.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/cuda/8.0.44/easybuild/CUDA-8.0.44-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/cufflinks/2.2.1/easybuild/Cufflinks-2.2.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/fftw/3.3.6/easybuild/FFTW-3.3.6-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/gdal/2.1.3/easybuild/GDAL-2.1.3-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/geant4/10.02.p03/easybuild/Geant4-10.02.p03-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/geos/3.6.1/easybuild/GEOS-3.6.1-iccifort-2016.4-Python-2.7.13.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/gsl/2.2.1/easybuild/GSL-2.2.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/hdf5/1.8.18/easybuild/HDF5-1.8.18-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/hmmer/3.1b2/easybuild/HMMER-3.1b2-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/htslib/1.4/easybuild/HTSlib-1.4-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/jags/4.2.0/easybuild/JAGS-4.2.0-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/jellyfish/2.2.6/easybuild/Jellyfish-2.2.6-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/julia/0.5.1/easybuild/Julia-0.5.1-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/libxc/3.0.0/easybuild/libxc-3.0.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/metis/4.0.3/easybuild/METIS-4.0.3-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/metis/5.1.0/easybuild/METIS-5.1.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/mono/4.6.2.7/easybuild/Mono-4.6.2.7-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/mothur/1.39.4/easybuild/Mothur-1.39.4-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/netcdf/4.4.1.1/easybuild/netCDF-4.4.1.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/netcdf-c++/4.2/easybuild/netCDF-C++-4.2-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/openmpi/2.0.2/easybuild/OpenMPI-2.0.2-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/proj/4.9.3/easybuild/PROJ-4.9.3-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/python27-scipy-stack/2017a/easybuild/Python27-SciPy-Stack-2017a-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/r/3.3.3/easybuild/R-3.3.3-iimkl-2016.4-bare.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/samtools/0.1.20/easybuild/SAMtools-0.1.20-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/samtools/1.3.1/easybuild/SAMtools-1.3.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/stacks/1.45/easybuild/Stacks-1.45-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/suitesparse/4.5.4/easybuild/SuiteSparse-4.5.4-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/superlu/5.1.1/easybuild/SuperLU-5.1.1-iimkl-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/tophat/2.1.1/easybuild/TopHat-2.1.1-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/trinity/2.4.0/easybuild/Trinity-2.4.0-iccifort-2016.4.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2016.4/vcftools/0.1.14/easybuild/VCFtools-0.1.14-iccifort-2016.4-Perl-5.22.2.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/arpack-ng/3.4.0/easybuild/arpack-ng-3.4.0-iimkl-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bamtools/2.4.1/easybuild/BamTools-2.4.1-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bcftools/1.4/easybuild/BCFtools-1.4-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/beagle-lib/2.1.2/easybuild/beagle-lib-2.1.2-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bedtools/2.26.0/easybuild/BEDTools-2.26.0-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/blat/3.5/easybuild/BLAT-3.5-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/boost/1.60.0/easybuild/Boost-1.60.0-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bowtie/1.1.2/easybuild/Bowtie-1.1.2-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bowtie2/2.3.0/easybuild/Bowtie2-2.3.0-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/bwa/0.7.15/easybuild/BWA-0.7.15-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/cufflinks/2.2.1/easybuild/Cufflinks-2.2.1-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/fftw/3.3.6/easybuild/FFTW-3.3.6-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/gdal/2.1.3/easybuild/GDAL-2.1.3-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/geos/3.6.1/easybuild/GEOS-3.6.1-iccifort-2017.1-Python-2.7.13.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/gsl/2.2.1/easybuild/GSL-2.2.1-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/hdf5/1.8.18/easybuild/HDF5-1.8.18-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/htslib/1.4/easybuild/HTSlib-1.4-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/jags/4.2.0/easybuild/JAGS-4.2.0-iimkl-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/jellyfish/2.2.6/easybuild/Jellyfish-2.2.6-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/metis/5.1.0/easybuild/METIS-5.1.0-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/netcdf/4.4.1.1/easybuild/netCDF-4.4.1.1-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/netcdf-c++/4.2/easybuild/netCDF-C++-4.2-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/openmpi/2.0.2/easybuild/OpenMPI-2.0.2-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/proj/4.9.3/easybuild/PROJ-4.9.3-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/python27-scipy-stack/2017a/easybuild/Python27-SciPy-Stack-2017a-iimkl-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/r/3.3.3/easybuild/R-3.3.3-iimkl-2017.1-bare.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/samtools/0.1.20/easybuild/SAMtools-0.1.20-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/samtools/1.3.1/easybuild/SAMtools-1.3.1-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/stacks/1.45/easybuild/Stacks-1.45-iccifort-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/suitesparse/4.5.4/easybuild/SuiteSparse-4.5.4-iimkl-2017.1.eb', '/cvmfs/soft.computecanada.ca/easybuild/software/2017/avx/Compiler/intel2017.1/tophat/2.1.1/easybuild/TopHat-2.1.1-iccifort-2017.1.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.996,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.1.2-rb6578208396477717d7d4f0e7d6d55751410c434",
+    "easybuild-framework_version": "3.1.2-rd5bd3ea7189cf01de20734f8f13ef0b62438aae3",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 5114756,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lmod/lmod/libexec/lmod', '7.4.5'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.2.1511",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1491450445,
+    "total_memory": 241658,
+},
+]

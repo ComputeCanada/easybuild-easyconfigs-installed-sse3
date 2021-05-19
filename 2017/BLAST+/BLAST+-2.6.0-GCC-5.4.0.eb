@@ -1,0 +1,126 @@
+# Built with EasyBuild version 3.6.2-r1ed7dac97acd22d6301e534c78048f7fcedaa585 on 2018-08-24_17-00-55
+# Built with EasyBuild version 3.6.2-r1ed7dac97acd22d6301e534c78048f7fcedaa585 on 2018-08-24_16-59-36
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2014 Uni.Lu/LCSB, NTUA
+# Authors::   Fotis Georgatos <fotis@cern.ch>, Kenneth Hoste (UGent)
+# License::   MIT/GPL
+# $Id$
+#
+# This work implements a part of the HPCBIOS project and is a component of the policy:
+# http://hpcbios.readthedocs.org/en/latest/HPCBIOS_2012-94.html
+##
+
+easyblock = 'ConfigureMake'
+
+name = 'BLAST+'
+version = '2.6.0'
+
+homepage = 'http://blast.ncbi.nlm.nih.gov/'
+description = """Basic Local Alignment Search Tool, or BLAST, is an algorithm
+ for comparing primary biological sequence information, such as the amino-acid
+ sequences of different proteins or the nucleotides of DNA sequences."""
+
+toolchain = {'name': 'GCC', 'version': '5.4.0'}
+
+# eg. ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.2.30/ncbi-blast-2.2.30+-src.tar.gz
+sources = ['ncbi-blast-%(version)s+-src.tar.gz']
+source_urls = ['http://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/%(version)s/']
+
+patches = [
+    '%(name)s-%(version)s_convert_scoremat.pl.patch',
+    '%(name)s-%(version)s_update_blastdb.pl.patch',
+    '%(name)s-%(version)s_make_snp_table.pl.patch',
+    '%(name)s-%(version)s_legacy_blast.pl.patch',
+    '%(name)s-%(version)s_Makefile.in.top.diff'
+]
+
+builddependencies = [('Boost', '1.60.0'),('Python', '2.7.14')]
+
+configopts = '--with-boost=$EBROOTBOOST --with-64 --with-bin-release --without-debug --with-mt'
+
+sanity_check_paths = {
+    'files': ["bin/blastn", "bin/blastp", "bin/blastx"],
+    'dirs': []
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 19.78,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--allow-loaded-modules='nixpkgs'", '--backup-modules', "--buildpath='/dev/shm/ebuser/avx2'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--containerpath='/cvmfs/soft.computecanada.ca/easybuild/containers'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant,gettext,X11,pkg-config,LLVM,libdrm,gperf,FLTK,fontconfig,freetype,GMP,GL2PS,gnuplot,GraphicsMagick,MPFR,libmatheval,Tcl,Tk,CFITSIO,libX11,libXft,libXpm,libXext,makedepend,cairo,libiconv,FFmpeg,GLib,FLANN'", "--filter-env-vars='LD_LIBRARY_PATH,LD_PRELOAD'", '--force', "--hide-deps='icc,ifort,GCCcore'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', '--module-depends-on', "--module-naming-scheme='SoftCCHierarchicalMNS'", '--module-only', "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--subdir-user-modules='.local/easybuild/modules/2017'", "--suffix-modules-path=''", "--use-ccache='/cvmfs/local/ccache'", 'BLAST+-2.6.0-GCC-5.4.0.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.994,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2-rb1e0c7ee03e676eb47ab8f2570c6c79f575bd849",
+    "easybuild-framework_version": "3.6.2-r1ed7dac97acd22d6301e534c78048f7fcedaa585",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node",
+    "install_size": 1716085476,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lmod/lmod/libexec/lmod', '7.7.4'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/tmp/eb-fqhqFA/tmpr4ha3H/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/2.7.14/bin/python",
+    "timestamp": 1535129975,
+    "total_memory": 241657,
+}]
+
+# Build statistics
+buildstats = [
+{
+    "build_time": 19.78,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--allow-loaded-modules='nixpkgs'", '--backup-modules', "--buildpath='/dev/shm/ebuser/avx2'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--containerpath='/cvmfs/soft.computecanada.ca/easybuild/containers'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant,gettext,X11,pkg-config,LLVM,libdrm,gperf,FLTK,fontconfig,freetype,GMP,GL2PS,gnuplot,GraphicsMagick,MPFR,libmatheval,Tcl,Tk,CFITSIO,libX11,libXft,libXpm,libXext,makedepend,cairo,libiconv,FFmpeg,GLib,FLANN'", "--filter-env-vars='LD_LIBRARY_PATH,LD_PRELOAD'", '--force', "--hide-deps='icc,ifort,GCCcore'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', '--module-depends-on', "--module-naming-scheme='SoftCCHierarchicalMNS'", '--module-only', "--optarch='{\\'GCC\\': \\'march=core-avx2\\', \\'Intel\\': \\'xCore-AVX2\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repository='GitRepository'", "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo.git'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--subdir-user-modules='.local/easybuild/modules/2017'", "--suffix-modules-path=''", "--use-ccache='/cvmfs/local/ccache'", 'BLAST+-2.6.0-GCC-5.4.0.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.994,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2-rb1e0c7ee03e676eb47ab8f2570c6c79f575bd849",
+    "easybuild-framework_version": "3.6.2-r1ed7dac97acd22d6301e534c78048f7fcedaa585",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node",
+    "install_size": 1716085476,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lmod/lmod/libexec/lmod', '7.7.4'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/tmp/eb-fqhqFA/tmpr4ha3H/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/2.7.14/bin/python",
+    "timestamp": 1535129975,
+    "total_memory": 241657,
+},
+{
+    "build_time": 19.02,
+    "command_line": ['--add-dummy-to-minimal-toolchains', "--allow-loaded-modules='nixpkgs'", '--backup-modules', "--buildpath='/dev/shm/ebuser/sse3'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--containerpath='/cvmfs/soft.computecanada.ca/easybuild/containers'", "--filter-deps='Bison,CMake,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat,Mesa,libGLU,SWIG,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant,gettext,X11,pkg-config,LLVM,libdrm,gperf,FLTK,fontconfig,freetype,GMP,GL2PS,gnuplot,GraphicsMagick,MPFR,libmatheval,Tcl,Tk,CFITSIO,libX11,libXft,libXpm,libXext,makedepend,cairo,libiconv,FFmpeg,GLib,FLANN'", "--filter-env-vars='LD_LIBRARY_PATH,LD_PRELOAD'", '--force', "--hide-deps='icc,ifort,GCCcore'", "--hide-toolchains='GCCcore,iompi,iomkl'", '--ignore-osdeps', "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', '--module-depends-on', "--module-naming-scheme='SoftCCHierarchicalMNS'", '--module-only', "--optarch='{\\'GCC\\': \\'march=nocona -mtune=generic\\', \\'Intel\\': \\'msse3\\', \\'GCCcore\\': \\'GENERIC\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo_sse3'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--subdir-user-modules='.local/easybuild/modules/2017'", "--suffix-modules-path=''", "--use-ccache=''", 'BLAST+-2.6.0-GCC-5.4.0.eb'],
+    "core_count": 56,
+    "cpu_model": "Intel(R) Xeon(R) CPU E5-2680 v4 @ 2.40GHz",
+    "cpu_speed": 2399.994,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "3.6.2-rb1e0c7ee03e676eb47ab8f2570c6c79f575bd849",
+    "easybuild-framework_version": "3.6.2-r1ed7dac97acd22d6301e534c78048f7fcedaa585",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/lvjwgn6hpngyy6k4xqcqa9h2cxy3fl30-gfortran-5.4.0/libexec/gcc/x86_64-unknown-linux-gnu/5.4.0/lto-wrapper; Target: x86_64-unknown-linux-gnu; Configured with: ; Thread model: posix; gcc version 5.4.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node",
+    "install_size": 1706403887,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lmod/lmod/libexec/lmod', '7.7.4'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.4.1708",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-5.4.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/easybuild/software/2017/Core/python/2.7.14/bin/python",
+    "timestamp": 1535130054,
+    "total_memory": 241657,
+},
+]

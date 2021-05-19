@@ -1,0 +1,64 @@
+# Built with EasyBuild version 4.2.0-ra2af55dc703b621534e730402d4757763cc1b5b4 on 2020-05-05_15-11-17
+# Built with EasyBuild version 3.7.0-rc7b39e420d4f1af2b79028319dfd5ed90b504390 on 2018-11-09_20-02-38
+# Built with EasyBuild version 3.1.1-r0d799fee0c566dd833bd858e1f302c3b65220b7e on 2017-03-16_19-21-05
+##
+# This file is an EasyBuild reciPY as per https://github.com/hpcugent/easybuild
+#
+# Copyright:: Copyright 2012-2013 The Cyprus Institute
+# Authors::   Andreas Panteli <a.panteli@cyi.ac.cy>, George Tsouloupas <g.tsouloupas@cyi.ac.cy>
+# License::   MIT/GPL
+#
+##
+name = 'BamTools'
+version = '2.4.1'
+
+homepage = 'https://github.com/pezmaster31/bamtools'
+description = "BamTools provides both a programmer's API and an end-user's toolkit for handling BAM files."
+
+toolchain = {'version': '7.3.0', 'name': 'GCC'}
+
+source_urls = ['https://github.com/pezmaster31/%(namelower)s/archive']
+sources = ['v%(version)s.tar.gz']
+checksums = ['933a0c1a83c88c1dac8078c0c0e82f6794c75cb927265399404bc2cc2611204b']
+
+builddependencies = [
+    ('CMake', '3.4.3'),
+]
+
+configopts = " -DZLIB_ROOT=$NIXUSER_PROFILE  -DOPENGL_INCLUDE_DIR=$NIXUSER_PROFILE/include -DOPENGL_gl_LIBRARY=$NIXUSER_PROFILE/lib/libGL.so  -DOPENGL_glu_LIBRARY=$NIXUSER_PROFILE/lib/libGLU.so  -DJPEG_INCLUDE_DIR=$NIXUSER_PROFILE/include -DJPEG_LIBRARY=$NIXUSER_PROFILE/lib/libjpeg.so  -DPNG_PNG_INCLUDE_DIR=$NIXUSER_PROFILE/include -DPNG_LIBRARY=$NIXUSER_PROFILE/lib/libpng.so  -DPYTHON_EXECUTABLE=$EBROOTPYTHON/bin/python  -DCURL_LIBRARY=$NIXUSER_PROFILE/lib/libcurl.so -DCURL_INCLUDE_DIR=$NIXUSER_PROFILE/include  -DCMAKE_SYSTEM_PREFIX_PATH=$NIXUSER_PROFILE  -DCMAKE_SKIP_RPATH=ON "
+
+files_to_copy = ['bin', 'lib', 'include', 'docs', 'LICENSE', 'README']
+
+sanity_check_paths = {
+    'files': ['bin/%(namelower)s', 'include/shared/bamtools_global.h', 'lib/libbamtools.a', 'lib/libbamtools.so', 'lib/libbamtools-utils.a', 'lib/libjsoncpp.a'],
+    'dirs': ['include/api', 'docs'],
+}
+
+moduleclass = 'bio'
+
+# Build statistics
+buildstats = [{
+    "build_time": 82.89,
+    "command_line": ['--add-system-to-minimal-toolchains', "--allow-loaded-modules='nixpkgs'", "--buildpath='/tmp/ebuser/sse3'", "--configfiles='/cvmfs/soft.computecanada.ca/easybuild/config.cfg'", "--containerpath='/cvmfs/soft.computecanada.ca/easybuild/containers'", '--enforce-checksums', "--filter-deps='Bison,CMake=:3.12.3[,flex,ncurses,libreadline,bzip2,zlib,binutils,M4,Autoconf,Automake,libtool,Autotools,Szip,libxml2,sparsehash,SQLite,cURL,Doxygen,expat=:2.2.5[,Mesa,libGLU,SWIG=:3.0.12[,PCRE,libjpeg-turbo,LibTIFF,libpng,XZ,ant,gettext,X11,pkg-config,LLVM=:6.0.1[,libdrm,gperf,FLTK,fontconfig,freetype,GMP,GL2PS,gnuplot,GraphicsMagick,MPFR,libmatheval,Tcl,Tk,CFITSIO,libX11,libXft,libXpm,libXext,makedepend,cairo,libiconv,FFmpeg,GLib,FLANN'", "--filter-env-vars='LD_LIBRARY_PATH,LD_PRELOAD'", '--disable-fixed-installdir-naming-scheme', "--hide-deps='icc,ifort,GCCcore'", "--hooks='/cvmfs/soft.computecanada.ca/easybuild/cc_hooks.py'", '--ignore-osdeps', "--include-module-naming-schemes='/cvmfs/soft.computecanada.ca/easybuild/easybuild-computecanada-config/SoftCCHierarchicalMNS.py'", "--include-toolchains='/cvmfs/soft.computecanada.ca/easybuild/easybuild-computecanada-config/toolchains/*.py'", "--installpath='/cvmfs/soft.computecanada.ca/easybuild'", '--minimal-toolchains', '--module-depends-on', "--module-naming-scheme='SoftCCHierarchicalMNS'", "--optarch='{\\'GCC\\': \\'march=nocona -mtune=generic\\', \\'GCCcore\\': \\'GENERIC\\', \\'Intel\\': \\'msse3\\', \\'PGI\\': \\'tp=px\\'}'", "--packagepath='/cvmfs/soft.computecanada.ca/easybuild/packages'", "--parallel='8'", "--prefix='/cvmfs/soft.computecanada.ca/easybuild'", '--recursive-module-unload', "--repositorypath='/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo_sse3'", "--robot-paths='/cvmfs/soft.computecanada.ca/easybuild/easyconfigs:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo_sse3:/cvmfs/soft.computecanada.ca/easybuild/ebfiles_repo'", "--sourcepath='/cvmfs/soft.computecanada.ca/easybuild/sources'", "--subdir-modules='modules/2017'", "--subdir-software='software/2017'", "--subdir-user-modules='.local/easybuild/modules/2017'", "--suffix-modules-path=''", "--use-ccache=''", '--use-existing-modules', 'BamTools-2.4.1-GCC-7.3.0.eb'],
+    "core_count": 16,
+    "cpu_arch_name": "UNKNOWN",
+    "cpu_model": "Intel Xeon Processor (Skylake, IBRS)",
+    "cpu_speed": 2095.078,
+    "cpu_vendor": "Intel",
+    "easybuild-easyblocks_version": "4.2.0-r6c7ca93b7c0a8078fe9b38aa95cfcc2f1a49601a",
+    "easybuild-framework_version": "4.2.0-ra2af55dc703b621534e730402d4757763cc1b5b4",
+    "gcc_version": "Using built-in specs.; COLLECT_GCC=gcc; COLLECT_LTO_WRAPPER=/cvmfs/soft.computecanada.ca/nix/store/c9qaklf3dvjvlbky3fiakmafb1p8l106-gfortran-7.3.0/libexec/gcc/x86_64-pc-linux-gnu/7.3.0/lto-wrapper; OFFLOAD_TARGET_NAMES=nvptx-none; Target: x86_64-pc-linux-gnu; Configured with: ; Thread model: posix; gcc version 7.3.0 (GCC) ; ",
+    "glibc_version": "2.24",
+    "hostname": "build-node.computecanada.ca",
+    "install_size": 5058736,
+    "modules_tool": ('Lmod', '/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/lmod/lmod/libexec/lmod', '8.2.10'),
+    "os_name": "centos linux",
+    "os_type": "Linux",
+    "os_version": "7.8.2003",
+    "platform_name": "x86_64-unknown-linux",
+    "python_version": "2.7.13 (default, Dec 17 2016, 20:05:07) ; [GCC 5.4.0]",
+    "system_gcc_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/gcc-7.3.0/bin/gcc",
+    "system_python_path": "/cvmfs/soft.computecanada.ca/nix/var/nix/profiles/16.09/bin/python",
+    "timestamp": 1588691477,
+    "total_memory": 60232,
+}]
